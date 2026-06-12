@@ -1,39 +1,51 @@
-## 💻 Sample Code
+# 🚆 Railway Reservation Management System
 
-### Ticket Booking Example
+## 📌 Overview
+The Railway Reservation Management System is a Java-based application designed to manage railway ticket reservations efficiently. The system allows users to book tickets, cancel reservations, check passenger details, and view available seats. It simplifies the railway booking process by maintaining passenger and train records in a structured manner.
 
-```java
-import java.sql.*;
+## 🚀 Features
+- Passenger Ticket Booking
+- Ticket Cancellation
+- Seat Availability Check
+- Passenger Information Management
+- Train Details Management
+- Automatic Seat Allocation
+- Reservation Status Tracking
+- User-Friendly Console Interface
 
-public class BookTicket {
+## 🛠️ Technologies Used
 
-    public static void main(String[] args) {
-        try {
-            Connection con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/railway_db",
-                "root",
-                "password"
-            );
+### Backend
+- Java
+- JDBC
+- MySQL
 
-            String query = "INSERT INTO passenger(name, age, train_no, seat_no) VALUES (?, ?, ?, ?)";
+### Tools
+- Eclipse / IntelliJ IDEA / VS Code
+- MySQL Workbench
+- Git & GitHub
 
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, "Vidhyasree");
-            ps.setInt(2, 22);
-            ps.setInt(3, 12635);
-            ps.setString(4, "S1-25");
+## 📂 Project Structure
+Railway-Reservation-System/
+│
+├── src/
+│   ├── Main.java
+│   ├── ReservationSystem.java
+│   ├── Passenger.java
+│   ├── Train.java
+│   └── DatabaseConnection.java
+│
+├── database/
+│   └── railway_db.sql
+│
+├── screenshots/
+│   ├── booking.png
+│   ├── cancellation.png
+│   └── display.png
+│
+└── README.md
+👨‍💻 Author
+Vidhyasree
+📜 License
+This project is developed for educational and learning purposes.
 
-            int result = ps.executeUpdate();
-
-            if(result > 0){
-                System.out.println("Ticket Booked Successfully!");
-            }
-
-            con.close();
-
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-```
